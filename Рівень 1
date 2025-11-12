@@ -1,0 +1,45 @@
+def find_elements_less_than_average(data_list: list[float]) -> list[float]:
+    """
+    Знаходить і повертає елементи списку, які менші за середнє арифметичне
+    значення всіх елементів списку.
+
+    Параметри:
+    data_list (list[float]): Список дійсних чисел.
+
+    Повертає:
+    list[float]: Список елементів, менших за середнє арифметичне.
+    """
+    # 1. Перевірка на порожній список
+    if not data_list:
+        print("Список порожній. Середнє арифметичне не може бути обчислено.")
+        return []
+
+    # 2. Обчислення середнього арифметичного значення
+    # Використовуємо вбудовані функції sum() та len() для ефективності.
+    list_sum = sum(data_list)
+    list_count = len(data_list)
+    average_value = list_sum / list_count
+    
+    print(f"Список: {data_list}")
+    print(f"Сума елементів: {list_sum}")
+    print(f"Кількість елементів (n): {list_count}")
+    print(f"Середнє арифметичне значення: {average_value:.3f}")
+
+    # 3. Фільтрація елементів
+    # Створюємо новий список, що містить лише елементи, менші за середнє.
+    elements_less_than_avg = [
+        element for element in data_list if element < average_value
+    ]
+    
+    return elements_less_than_avg
+
+# --- Приклад використання ---
+
+# Список n дійсних чисел
+numbers = [15.5, 3.2, 25.0, 10.1, 7.8, 4.0, 30.0]
+
+result_list = find_elements_less_than_average(numbers)
+
+print("-" * 40)
+print("✅ Елементи, менші за середнє арифметичне:")
+print(result_list)
